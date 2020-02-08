@@ -8,51 +8,8 @@ namespace EX_4A_Creating_a_Farm
         static void Main(string[] args)
         {
             Console.WriteLine("\tEX_4A_Creating_A_Farm.Program.Main()\n");
-
             Farm.Welcome();
             Farm.Farewell();
-
-            
-            //Creates all the animales (2 horses, 1 pig, 1 chicken, and 1 cow)
-
-           // var mrEd = new Horse();
-            /*
-            var newHorse = new Horse();
-            var porky = new Pig("Porky");
-            var rooster = new Chicken("Mr. Clucks");
-            var hershey = new Cow("Hershey");
-
-            //The first horse and methods spcific to it
-            mrEd.Speak();
-            mrEd.walk();
-            mrEd.eat();
-            mrEd.sleep();
-            Console.WriteLine("\n");
-
-            //Actions for the pig to do
-            porky.Speak();
-            porky.walk();
-            porky.eat();
-            porky.sleep();
-            porky.Bacon();
-            Console.WriteLine("\n");
-
-            //Actions for the Chicken to do
-            rooster.Speak();
-            rooster.walk();
-            rooster.eat();
-            rooster.sleep();
-            Console.WriteLine("\n");
-
-            //Actions for the Cow to do
-            hershey.Speak();
-            hershey.walk();
-            hershey.eat();
-            hershey.sleep();
-
-            //Final comment about the farm animals
-            Console.WriteLine("\n\tIts starting to look like a real farm over here.");
-            */
         }
     }
 
@@ -85,23 +42,16 @@ namespace EX_4A_Creating_a_Farm
                     PickAnimal();
                     break;
             }
-            /*
-            catch (Exception ex)
-            {
-                Console.WriteLine("We don't have enough money to buy any more animals!");
-                Console.WriteLine("Time to play with animals on Caleb's Farm");
-                Continue();
-                TimeToPlay();
-            }
-            */
         }
 
+        //common lines used in simple method
         public static void Continue()
         {
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
 
+        //ending method
         public static void Farewell()
         {
             Console.WriteLine("\nLooks like it's time for supper...");
@@ -110,8 +60,7 @@ namespace EX_4A_Creating_a_Farm
             System.Environment.Exit(1);
         }
 
-        
-        
+        //The buying and tracking of animals
         public static void PickAnimal()
         {
             Console.Clear();
@@ -199,7 +148,7 @@ namespace EX_4A_Creating_a_Farm
 
                         break;
                     }
-                case 5:
+                case 5: //Makes sure there is at least 1 animal bought
                     {
                         if (Horse.numOfHorses + Cow.numOfCows + Pig.numOfPigs + Chicken.numOfChickens ==0)
                         {
@@ -221,6 +170,7 @@ namespace EX_4A_Creating_a_Farm
             PickAnimal();
         }
 
+        //checks to see if there is money to buy more animals or not
         public static void NotEnoughMoney()
         {
             if (farmMoney < costOfChicken)
@@ -237,37 +187,8 @@ namespace EX_4A_Creating_a_Farm
                 PickAnimal();
             }
         }
-        /*
-        public static void BuyOrPlay()
-        {
-            Console.Clear();
-            int buyOrPlay;
-            Console.WriteLine("\n1)\tBuy");
-            Console.WriteLine("2)\tPlay");
-            Console.Write("Do you want to buy more animals or begin to play with them [1/2]: ");
-            try
-            {
-                buyOrPlay = Convert.ToInt32(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                buyOrPlay = -1;
-            }
-            switch (buyOrPlay)
-            {
-                case 1:
-                    PickAnimal();
-                    break;
-                case 2:
-                    TimeToPlay();
-                    break;
-                default:
-                    Console.WriteLine("Invalid option");
-                    BuyOrPlay();
-                    break;
-            }
-        }
-        */
+
+        //Choosing of which animal to play with
         public static void TimeToPlay()
         {
             int animalChoice;
@@ -349,6 +270,7 @@ namespace EX_4A_Creating_a_Farm
             Console.WriteLine("That was Fun");
         }
 
+        //Action selection for the animal chosen
         public static void Activity(int animalNum)
         {
             Horse mrEd = new Horse("Mr. Ed");
@@ -403,6 +325,7 @@ namespace EX_4A_Creating_a_Farm
             Console.WriteLine("");
             switch (10*animalNum + actionNum)
             {
+                //Horse cases
                 case 11:
                     mrEd.Speak();
                     break;
@@ -420,6 +343,7 @@ namespace EX_4A_Creating_a_Farm
                 case 35:
                     Console.WriteLine("\nThis action is only for pigs...");
                     break;
+                //Cow Cases
                 case 21:
                     hershey.Speak();
                     break;
@@ -432,6 +356,7 @@ namespace EX_4A_Creating_a_Farm
                 case 24:
                     hershey.sleep();
                     break;
+                //Chicken cases
                 case 31:
                     rooster.Speak();
                     break;
@@ -444,6 +369,7 @@ namespace EX_4A_Creating_a_Farm
                 case 34:
                     rooster.sleep();
                     break;
+                //Pig Cases
                 case 41:
                     porky.Speak();
                     break;
@@ -459,12 +385,14 @@ namespace EX_4A_Creating_a_Farm
                 case 45:
                     porky.Bacon();
                     break;
+                //Pick a different animal cases
                 case 16:
                 case 26:
                 case 36:
                 case 46:
                     TimeToPlay();
                     break;
+                //Leave the Famr cases
                 case 17:
                 case 27:
                 case 37:
@@ -476,7 +404,6 @@ namespace EX_4A_Creating_a_Farm
             TimeToPlay();
         } 
     }
-
 
     //Horse class and methods
     public class Horse
