@@ -213,7 +213,7 @@ namespace Lab_4C_SpaceGame
                     }
                 case 6: //View Ship Contents
                     {
-                        Console.WriteLine("// TODO: ");
+                        ShowInventory();
                         Continue();
                         break;
                     }
@@ -274,6 +274,7 @@ namespace Lab_4C_SpaceGame
                     }
                     ship.level = 2;
                     hero.credits -= 100;
+                    ship.capacity = 1000;
                     Console.WriteLine("\nYou can now hold more cargo and the weight of larger items.....like a WARP engine!");
                     break;
                 case 3:
@@ -585,6 +586,28 @@ namespace Lab_4C_SpaceGame
             }
             return onPlanet;
         }
+
+        public static void ShowInventory()
+        {
+            Console.Clear();
+            int itemSum = hero.salt + hero.iron + hero.seeds + hero.hydrogen + hero.rareMetals + hero.darkMatter + hero.unobtanium;
+            Console.WriteLine($"\n\tYou are on Planet {CheckLocation()}");
+            Console.WriteLine("\nHere is what you currently have in your possession:");
+            Console.WriteLine($"\nCredits: {hero.credits}");
+            Console.WriteLine($"Salt: {hero.salt}");
+            Console.WriteLine($"Iron: {hero.iron}");
+            Console.WriteLine($"Seeds: {hero.seeds}");
+            Console.WriteLine($"Hydrogen: {hero.hydrogen}");
+            Console.WriteLine($"Rare Metals: {hero.rareMetals}");
+            Console.WriteLine($"Dark Matter: {hero.darkMatter}");
+            Console.WriteLine($"UnObtanium: {hero.unobtanium}");
+            Console.WriteLine("\nShip Statistics:");
+            Console.WriteLine($"Your ship level is Level {ship.level}");
+            Console.WriteLine($"Your ship has {ship.fuel} units of fuel remaining");
+            Console.WriteLine($"Your ship's capacity is currently {itemSum} / {ship.capacity}");
+            Continue();
+            Choices();
+        }
     }
 
 
@@ -834,6 +857,7 @@ namespace Lab_4C_SpaceGame
         public int shipX = 3;
         public int shipY = 1;
         public int level = 1;
+        public int capacity = 40;
 
         public Ship()
         {
