@@ -48,6 +48,9 @@ namespace Lab_4C_SpaceGame
         static Planet tatooine = new Planet("Tatooine", 3, 15, 1);
         static Ship ship = new Ship();
         static Random random = new Random();
+        static double timer = 100.00;
+        static double scavengeTime = .25;
+        static double travelTime = 1.0;
 
         public static void Welcome()
         {
@@ -172,7 +175,7 @@ namespace Lab_4C_SpaceGame
                         }
                         if (ship.shipX == jupiter.planetX && ship.shipY == jupiter.planetY)
                         {
-                            //ScavengeEarth();
+                            ScavengeJupiter();
                         }
                         if (ship.shipX == alpha.planetX && ship.shipY == alpha.planetY)
                         {
@@ -194,7 +197,7 @@ namespace Lab_4C_SpaceGame
                     }
                 case 3: //Travel
                     {
-                        Travel();
+                        WhichPlanet();
                         break;
                     }
                 case 4: //Upgrade Ship
@@ -382,239 +385,427 @@ namespace Lab_4C_SpaceGame
 
         public static void ScavengeEarth()
         {
-            int chance = (int)(random.NextDouble() * 100);
-            Console.WriteLine(chance);
-            if (chance >= 0 && chance < 71)
+            Console.Clear();
+            Console.WriteLine("\tYou went out for a few hours and....");
+            Console.WriteLine("");
+            int chance = (int)(random.NextDouble() * 101);
+            int numOfItems = (int)(random.NextDouble() * 11);
+            if (chance >= 0 && chance < 51)
             {
-                Console.WriteLine("You found 5 units of salt");
+                Console.WriteLine($"You found {numOfItems} units of salt");
+                hero.salt += numOfItems;
+            }
+            else if (chance > 50 && chance < 91)
+            {
+                Console.WriteLine($"You found {numOfItems} units of iron");
+                hero.iron += numOfItems;
+            }
+            else if (chance > 90 && chance < 96)
+            {
+                Console.WriteLine($"You found {numOfItems} units of seeds!");
+                hero.seeds += numOfItems;
             }
             else
             {
                 Console.WriteLine("What a waste, you did not find a thing..");
             }
+            timer -= scavengeTime;
             Continue();
             Choices();
         }
-
-        
-            /*
-        //Choosing of which animal to play with
-        public static void TimeToPlay()
+        public static void ScavengeJupiter()
         {
-            int animalChoice;
             Console.Clear();
-            Console.WriteLine("\nRemember, Here is your current Farm:");
-            Console.WriteLine("Animal\t\t# on Farm");
-            Console.WriteLine("---------------------------");
-            Console.WriteLine($"1) Horse\t{Horse.numOfHorses}");
-            Console.WriteLine($"2) Cow\t\t{Cow.numOfCows}");
-            Console.WriteLine($"3) Chicken\t{Chicken.numOfChickens}");
-            Console.WriteLine($"4) Pig\t\t{Pig.numOfPigs}");
-            Console.WriteLine("5) Buy more anmials");
-            Console.Write("\nWhich animal would like to play with? [1-5]: ");
+            Console.WriteLine("\tYou went out for a few hours and....");
+            Console.WriteLine("");
+            int chance = (int)(random.NextDouble() * 101);
+            int numOfItems = (int)(random.NextDouble() * 11);
+            if (chance >= 0 && chance < 31)
+            {
+                Console.WriteLine($"You found {numOfItems} units of hydrogen");
+                hero.hydrogen += numOfItems;
+            }
+            else if (chance > 30 && chance < 71)
+            {
+                Console.WriteLine($"You found {numOfItems} units of Rare Metals!");
+                hero.rareMetals += numOfItems;
+            }
+            else
+            {
+                Console.WriteLine("What a waste, you did not find a thing..");
+            }
+            timer -= scavengeTime;
+            Continue();
+            Choices();
+        }
+        public static void WhichPlanet()
+        {
+            int choice;
+            Console.Clear();
+            Console.Write("\tYou are on Planet ");
+            if (ship.shipX == earth.planetX && ship.shipY == earth.planetY)
+            {
+                Console.WriteLine($"{earth.name}!");
+            }
+            if (ship.shipX == jupiter.planetX && ship.shipY == jupiter.planetY)
+            {
+                Console.WriteLine($"{jupiter.name}!");
+            }
+            if (ship.shipX == alpha.planetX && ship.shipY == alpha.planetY)
+            {
+                Console.WriteLine($"{alpha.name}!");
+            }
+            if (ship.shipX == unknown.planetX && ship.shipY == unknown.planetY)
+            {
+                Console.WriteLine($"{unknown.name}!");
+            }
+            if (ship.shipX == tatooine.planetX && ship.shipY == tatooine.planetY)
+            {
+                Console.WriteLine($"{tatooine.name}!");
+            }
+            Console.WriteLine("\nHere are the planets in our system:");
+            Console.WriteLine($"1)\t{earth.name}");
+            Console.WriteLine($"2)\t{jupiter.name}");
+            Console.WriteLine($"3)\t{alpha.name}");
+            Console.WriteLine($"4)\t{unknown.name}");
+            Console.WriteLine($"5)\t{tatooine.name}");
+            Console.WriteLine($"6)\tBack to Choices");
+            Console.WriteLine("\nWhere would you like to go");
             try
             {
-                animalChoice = Convert.ToInt32(Console.ReadLine());
+                choice = Convert.ToInt32(Console.ReadLine());
             }
             catch (Exception)
             {
-                animalChoice = -1;
+                choice = -1;
             }
-            switch (animalChoice)
+
+            switch (choice)
             {
-                case 1: //Horse
+
+                case 1: //Earth
                     {
-                        if (Horse.numOfHorses == 0)
+                        if (earth.name == CheckLocation())
                         {
-                            Console.WriteLine("\nYou don't have any horses!");
-                            Continue();
-                            TimeToPlay();
+                            goto case -2;
                         }
-                        Activity(1);
+                        ship.shipX = earth.planetX;
+                        ship.shipY = earth.planetY;
+                        Travel();
                         break;
                     }
-                case 2: //Cow
+                case 2: //Jupiter
                     {
-                        if (Cow.numOfCows == 0)
+                        if (jupiter.name == CheckLocation())
                         {
-                            Console.WriteLine("\nYou don't have any cows!");
-                            Continue();
-                            TimeToPlay();
+                            goto case -2;
                         }
-                        Activity(2);
+                        ship.shipX = jupiter.planetX;
+                        ship.shipY = jupiter.planetY;
+                        Travel();
                         break;
                     }
-                case 3: //Chicken
+                case 3: //Alpha
                     {
-                        if (Chicken.numOfChickens == 0)
+                        if (alpha.name == CheckLocation())
                         {
-                            Console.WriteLine("\nYou don't have any chickens!");
-                            Continue();
-                            TimeToPlay();
+                            goto case -2;
                         }
-                        Activity(3);
+                        ship.shipX = alpha.planetX;
+                        ship.shipY = alpha.planetY;
+                        Travel();
                         break;
                     }
-                case 4: //Pig
+                case 4: //Unknown
                     {
-                        if (Pig.numOfPigs == 0)
+                        if (unknown.name == CheckLocation())
                         {
-                            Console.WriteLine("\nYou don't have any pigs!");
-                            Continue();
-                            TimeToPlay();
+                            goto case -2;
                         }
-                        Activity(4);
+                        ship.shipX = unknown.planetX;
+                        ship.shipY = unknown.planetY;
+                        Travel();
                         break;
                     }
-                case 5:
-                    PickAnimal();
-                    break;
+                case 5: //Tatooine
+                    {
+                        if (tatooine.name == CheckLocation())
+                        {
+                            goto case -2;
+                        }
+                        ship.shipX = tatooine.planetX;
+                        ship.shipY = tatooine.planetY;
+                        Travel();
+                        break;
+                    }
+                case 6: //Back to Choices
+                    {
+                        Choices();
+                        break;
+                    }
+                case -2:
+                    {
+                        Console.WriteLine("\nYou are already on that Planet!!!");
+                        Continue();
+                        WhichPlanet();
+                        break;
+                    }
                 default:
                     {
-                        Console.WriteLine("\nWe don't have that kind of animal on this Farm??");
+                        Console.WriteLine("\nThat planet has not been doscovered yet...");
                         Continue();
-                        TimeToPlay();
+                        WhichPlanet();
                         break;
                     }
             }
-            Console.WriteLine("That was Fun");
         }
 
-        //Action selection for the animal chosen
-        public static void Activity(int animalNum)
+        public static string CheckLocation()
         {
-            Horse mrEd = new Horse("Mr. Ed");
-            Pig porky = new Pig("Porky");
-            Chicken rooster = new Chicken("Mr. Clucks");
-            Cow hershey = new Cow("Hershey");
-            Console.Clear();
-            int actionNum = 0;
-            Console.WriteLine("\n#\tAction");
-            Console.WriteLine("---------------");
-            Console.WriteLine("1)\tSpeak");
-            Console.WriteLine("2)\tWalk");
-            Console.WriteLine("3)\tEat");
-            Console.WriteLine("4)\tSleep");
-            Console.WriteLine("5)\tBacon");
-            Console.WriteLine("6)\tPick a different animal");
-            Console.WriteLine("7)\tLeave the Farm");
-            Console.Write("\nWhat would you like to do with your ");
-            switch (animalNum)
+            string onPlanet = "";
+            if (ship.shipX == earth.planetX && ship.shipY == earth.planetY)
             {
-                case 1:
-                    Console.Write("Horse?");
+            onPlanet += earth.name;
+            }
+            if (ship.shipX == jupiter.planetX && ship.shipY == jupiter.planetY)
+            {
+            onPlanet += jupiter.name;
+            }
+            if (ship.shipX == alpha.planetX && ship.shipY == alpha.planetY)
+            {
+            onPlanet += alpha.name;
+            }
+            if (ship.shipX == unknown.planetX && ship.shipY == unknown.planetY)
+            {
+            onPlanet += unknown.name;
+            }
+            if (ship.shipX == tatooine.planetX && ship.shipY == tatooine.planetY)
+            {
+            onPlanet += tatooine.name;
+            }
+            return onPlanet;
+        }
+    }
+
+
+        /*
+    //Choosing of which animal to play with
+    public static void TimeToPlay()
+    {
+        int animalChoice;
+        Console.Clear();
+        Console.WriteLine("\nRemember, Here is your current Farm:");
+        Console.WriteLine("Animal\t\t# on Farm");
+        Console.WriteLine("---------------------------");
+        Console.WriteLine($"1) Horse\t{Horse.numOfHorses}");
+        Console.WriteLine($"2) Cow\t\t{Cow.numOfCows}");
+        Console.WriteLine($"3) Chicken\t{Chicken.numOfChickens}");
+        Console.WriteLine($"4) Pig\t\t{Pig.numOfPigs}");
+        Console.WriteLine("5) Buy more anmials");
+        Console.Write("\nWhich animal would like to play with? [1-5]: ");
+        try
+        {
+            animalChoice = Convert.ToInt32(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            animalChoice = -1;
+        }
+        switch (animalChoice)
+        {
+            case 1: //Horse
+                {
+                    if (Horse.numOfHorses == 0)
+                    {
+                        Console.WriteLine("\nYou don't have any horses!");
+                        Continue();
+                        TimeToPlay();
+                    }
+                    Activity(1);
                     break;
-                case 2:
-                    Console.Write("Cow?");
+                }
+            case 2: //Cow
+                {
+                    if (Cow.numOfCows == 0)
+                    {
+                        Console.WriteLine("\nYou don't have any cows!");
+                        Continue();
+                        TimeToPlay();
+                    }
+                    Activity(2);
                     break;
-                case 3:
-                    Console.Write("Chicken?");
+                }
+            case 3: //Chicken
+                {
+                    if (Chicken.numOfChickens == 0)
+                    {
+                        Console.WriteLine("\nYou don't have any chickens!");
+                        Continue();
+                        TimeToPlay();
+                    }
+                    Activity(3);
                     break;
-                case 4:
-                    Console.Write("Pig?");
+                }
+            case 4: //Pig
+                {
+                    if (Pig.numOfPigs == 0)
+                    {
+                        Console.WriteLine("\nYou don't have any pigs!");
+                        Continue();
+                        TimeToPlay();
+                    }
+                    Activity(4);
                     break;
-                default:
-                    Console.WriteLine("That is not something the animals know how to do!?");
-                    Console.WriteLine("Lets make sure we have the right animal.");
+                }
+            case 5:
+                PickAnimal();
+                break;
+            default:
+                {
+                    Console.WriteLine("\nWe don't have that kind of animal on this Farm??");
                     Continue();
                     TimeToPlay();
                     break;
-            }
-            Console.Write(" [1-7]: ");
-            try
-            {
-                actionNum = Convert.ToInt32(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("\nThat is not something the animals know how to do!?");
+                }
+        }
+        Console.WriteLine("That was Fun");
+    }
+
+    //Action selection for the animal chosen
+    public static void Activity(int animalNum)
+    {
+        Horse mrEd = new Horse("Mr. Ed");
+        Pig porky = new Pig("Porky");
+        Chicken rooster = new Chicken("Mr. Clucks");
+        Cow hershey = new Cow("Hershey");
+        Console.Clear();
+        int actionNum = 0;
+        Console.WriteLine("\n#\tAction");
+        Console.WriteLine("---------------");
+        Console.WriteLine("1)\tSpeak");
+        Console.WriteLine("2)\tWalk");
+        Console.WriteLine("3)\tEat");
+        Console.WriteLine("4)\tSleep");
+        Console.WriteLine("5)\tBacon");
+        Console.WriteLine("6)\tPick a different animal");
+        Console.WriteLine("7)\tLeave the Farm");
+        Console.Write("\nWhat would you like to do with your ");
+        switch (animalNum)
+        {
+            case 1:
+                Console.Write("Horse?");
+                break;
+            case 2:
+                Console.Write("Cow?");
+                break;
+            case 3:
+                Console.Write("Chicken?");
+                break;
+            case 4:
+                Console.Write("Pig?");
+                break;
+            default:
+                Console.WriteLine("That is not something the animals know how to do!?");
                 Console.WriteLine("Lets make sure we have the right animal.");
                 Continue();
                 TimeToPlay();
-            }
-            Console.WriteLine("");
-            switch (10 * animalNum + actionNum)
-            {
-                //Horse cases
-                case 11:
-                    mrEd.Speak();
-                    break;
-                case 12:
-                    mrEd.walk();
-                    break;
-                case 13:
-                    mrEd.eat();
-                    break;
-                case 14:
-                    mrEd.sleep();
-                    break;
-                case 15:
-                case 25:
-                case 35:
-                    Console.WriteLine("\nThis action is only for pigs...");
-                    break;
-                //Cow Cases
-                case 21:
-                    hershey.Speak();
-                    break;
-                case 22:
-                    hershey.walk();
-                    break;
-                case 23:
-                    hershey.eat();
-                    break;
-                case 24:
-                    hershey.sleep();
-                    break;
-                //Chicken cases
-                case 31:
-                    rooster.Speak();
-                    break;
-                case 32:
-                    rooster.walk();
-                    break;
-                case 33:
-                    rooster.eat();
-                    break;
-                case 34:
-                    rooster.sleep();
-                    break;
-                //Pig Cases
-                case 41:
-                    porky.Speak();
-                    break;
-                case 42:
-                    porky.walk();
-                    break;
-                case 43:
-                    porky.eat();
-                    break;
-                case 44:
-                    porky.sleep();
-                    break;
-                case 45:
-                    porky.Bacon();
-                    break;
-                //Pick a different animal cases
-                case 16:
-                case 26:
-                case 36:
-                case 46:
-                    TimeToPlay();
-                    break;
-                //Leave the Famr cases
-                case 17:
-                case 27:
-                case 37:
-                case 47:
-                    Farewell();
-                    break;
-            }
+                break;
+        }
+        Console.Write(" [1-7]: ");
+        try
+        {
+            actionNum = Convert.ToInt32(Console.ReadLine());
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("\nThat is not something the animals know how to do!?");
+            Console.WriteLine("Lets make sure we have the right animal.");
             Continue();
             TimeToPlay();
         }
-        */
+        Console.WriteLine("");
+        switch (10 * animalNum + actionNum)
+        {
+            //Horse cases
+            case 11:
+                mrEd.Speak();
+                break;
+            case 12:
+                mrEd.walk();
+                break;
+            case 13:
+                mrEd.eat();
+                break;
+            case 14:
+                mrEd.sleep();
+                break;
+            case 15:
+            case 25:
+            case 35:
+                Console.WriteLine("\nThis action is only for pigs...");
+                break;
+            //Cow Cases
+            case 21:
+                hershey.Speak();
+                break;
+            case 22:
+                hershey.walk();
+                break;
+            case 23:
+                hershey.eat();
+                break;
+            case 24:
+                hershey.sleep();
+                break;
+            //Chicken cases
+            case 31:
+                rooster.Speak();
+                break;
+            case 32:
+                rooster.walk();
+                break;
+            case 33:
+                rooster.eat();
+                break;
+            case 34:
+                rooster.sleep();
+                break;
+            //Pig Cases
+            case 41:
+                porky.Speak();
+                break;
+            case 42:
+                porky.walk();
+                break;
+            case 43:
+                porky.eat();
+                break;
+            case 44:
+                porky.sleep();
+                break;
+            case 45:
+                porky.Bacon();
+                break;
+            //Pick a different animal cases
+            case 16:
+            case 26:
+            case 36:
+            case 46:
+                TimeToPlay();
+                break;
+            //Leave the Famr cases
+            case 17:
+            case 27:
+            case 37:
+            case 47:
+                Farewell();
+                break;
+        }
+        Continue();
+        TimeToPlay();
     }
+    */
+    
     
 
     //Human Player Class
