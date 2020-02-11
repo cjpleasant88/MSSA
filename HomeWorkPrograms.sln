@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ex_3A_Exceptions", "EX_3A_E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EX_3D_Exception_Handeling", "EX_3D_Exception_Handeling\EX_3D_Exception_Handeling.csproj", "{8AFCA447-6C2A-4AAD-A1FA-6CDAE5077CFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{74CC17CB-BD91-4096-A023-C2DBE6B3BB72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{74CC17CB-BD91-4096-A023-C2DBE6B3BB72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab_4C_SpaceGame", "Lab_4C_SpaceGame\Lab_4C_SpaceGame.csproj", "{8F3DF5EE-9E97-4993-BD88-242FC24951DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{74CC17CB-BD91-4096-A023-C2DBE6B3BB72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74CC17CB-BD91-4096-A023-C2DBE6B3BB72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74CC17CB-BD91-4096-A023-C2DBE6B3BB72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3DF5EE-9E97-4993-BD88-242FC24951DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3DF5EE-9E97-4993-BD88-242FC24951DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3DF5EE-9E97-4993-BD88-242FC24951DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3DF5EE-9E97-4993-BD88-242FC24951DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
