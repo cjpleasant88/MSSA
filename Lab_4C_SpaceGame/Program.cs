@@ -119,6 +119,7 @@ namespace Lab_4C_SpaceGame
         public static void StoryLine()
         {
             Console.Clear();
+            Timer();
             Console.WriteLine("\nGreat! So as you know, the Earth is in pending doom.");
             Console.Write("\nWe have ");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -141,6 +142,17 @@ namespace Lab_4C_SpaceGame
             Choices();
         }
 
+        //Method to Display Time Left
+        public static void Timer()
+        {
+            Console.Write("                                               TIME LEFT: ");
+            if (timer < 20) Console.ForegroundColor = ConsoleColor.Yellow;
+            if (timer < 10) Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write($"{timer}");
+            Console.ResetColor();
+            Console.WriteLine(" Days!");
+        }
+
         //The Generic Action Choices Method for any planet
         public static void Choices()
         {
@@ -148,6 +160,7 @@ namespace Lab_4C_SpaceGame
             int fuelCost = 12;
             
             Console.Clear();
+            Timer();
             int choice;
             Console.WriteLine("\nWhat would you like to do?");
             Console.Write($"\nWe have ");
@@ -169,6 +182,7 @@ namespace Lab_4C_SpaceGame
             Console.WriteLine($"4)\tUpgrade Ship\t\tvaries");
             Console.WriteLine("5)\tView Map\t\t0");
             Console.WriteLine("6)\tView Ship Contents\t0");
+            Console.WriteLine("7)\tTrade Shop\t\tVaries");
 
             //Gets User input for selection and makes sure it is an integer
             Console.Write("\nWhat action would you like to take? [1-6]: ");
@@ -241,6 +255,12 @@ namespace Lab_4C_SpaceGame
                         Continue();
                         break;
                     }
+                case 7: //Trade Items
+                    {
+                        Trade();
+                        Continue();
+                        break;
+                    }
                 case 99: //Easter Egg to give 100 credits to player
                     hero.credits += 100;
                     break;
@@ -255,11 +275,22 @@ namespace Lab_4C_SpaceGame
             Choices();
         }
 
+        //Method to trade/purchase items with credits
+        public static void Trade()
+        {
+            Console.Clear();
+            Timer();
+            Console.WriteLine("//TODO: Write Trade Method");
+            Continue();
+            Choices();
+        }//End Trade
+
         //Method that shows Ship level and available upgrades
         public static void Upgrade()
         {
             int choice;
             Console.Clear();
+            Timer();
             Console.WriteLine($"Your ship is currently Level {ship.level}\n");
 
             //Switch case to determine what the user sees available depending on their ship level
@@ -385,7 +416,7 @@ namespace Lab_4C_SpaceGame
                                    .";
 
             Console.Clear();
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 40; i++)
             {
                 Console.WriteLine("");
             }
@@ -482,6 +513,7 @@ namespace Lab_4C_SpaceGame
         {
             int choice;
             Console.Clear();
+            Timer();
 
             //Determines which planet they are on
             Console.Write("\tYou are on Planet ");
@@ -619,6 +651,7 @@ namespace Lab_4C_SpaceGame
         public static void ShowInventory()
         {
             Console.Clear();
+            Timer();
             int itemSum = hero.salt + hero.iron + hero.seeds + hero.hydrogen + hero.rareMetals + hero.darkMatter + hero.unobtanium;
             Console.WriteLine($"\n\tYou are on Planet {CheckLocation()}");
             Console.WriteLine("\nHere is what you currently have in your possession:");
