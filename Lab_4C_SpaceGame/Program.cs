@@ -7,6 +7,36 @@ namespace Lab_4C_SpaceGame
     {
         static void Main(string[] args)
         {
+            SpaceGame.SpaceGameIntro();
+        }//End Main()
+    }//End Program Class
+
+    //Space Game class
+
+    public class SpaceGame
+    {
+        //Gamer Variables
+        static double timer = 100.00; //Maybe add difficulty level and decrease time to make harder?
+        static double scavengeTime = .25;
+
+        //player created
+        static Player hero = new Player();
+
+        //5 Planets created for game Planet(Name, X, Y, TradeConversion)
+        static Planet earth = new Planet("Earth", 3, 1, 1);
+        static Planet jupiter = new Planet("Jupiter", 1, 4, 1);
+        static Planet alpha = new Planet("Alpha Cantauri B", 12, 2, 1);
+        static Planet unknown = new Planet("Unknown", 11, 4, 1);
+        static Planet tatooine = new Planet("Tatooine", 3, 15, 1);
+
+        //User Ship created
+        static Ship ship = new Ship();
+        static Random random = new Random();
+        static double travelTime = 1.0; //maybe decrease time when ship is upgraded?
+
+        //Start of the game (Title)
+        public static void SpaceGameIntro()
+        {
             // Game Intro Grpahic
             Console.WriteLine("\tLab_4C_SpaceGame.Program.Main()\n");
             string gameTitle = @"
@@ -32,38 +62,15 @@ namespace Lab_4C_SpaceGame
                             Brandon Brookins, Caleb Pleasant, Josh Gaston, & Zacahary Silvis";
 
             Console.WriteLine(gameTitle);
-            SpaceGame.Continue();
+            Continue();
             Console.Clear();
 
             //Game Starts and to ask user for help
-            SpaceGame.Welcome();
+            Welcome();
 
             //If User says no or timer runs out, game ends with FareWell()
-            SpaceGame.Farewell();
-        }
-    }
-
-    //Space Game class
-    public class SpaceGame
-    {
-        //Gamer Variables
-        static double timer = 100.00; //Maybe add difficulty level and decrease time to make harder?
-        static double scavengeTime = .25;
-
-        //player created
-        static Player hero = new Player();
-
-        //5 Planets created for game Planet(Name, X, Y, TradeConversion)
-        static Planet earth = new Planet("Earth", 3, 1, 1);
-        static Planet jupiter = new Planet("Jupiter", 1, 4, 1);
-        static Planet alpha = new Planet("Alpha Cantauri B", 12, 2, 1);
-        static Planet unknown = new Planet("Unknown", 11, 4, 1);
-        static Planet tatooine = new Planet("Tatooine", 3, 15, 1);
-
-        //User Ship created
-        static Ship ship = new Ship();
-        static Random random = new Random();
-        static double travelTime = 1.0; //maybe decrease time when ship is upgraded?
+            Farewell();
+        }//End Space Game Intro
 
         //Asks User if they want to play the game
         public static void Welcome()
@@ -399,7 +406,7 @@ namespace Lab_4C_SpaceGame
                 Console.WriteLine("");
                 Thread.Sleep(120);
             }
-            Console.WriteLine("The End");
+            Console.WriteLine($"You are now on Planet {CheckLocation()}!");
             Continue();
         }
 
@@ -479,26 +486,6 @@ namespace Lab_4C_SpaceGame
             //Determines which planet they are on
             Console.Write("\tYou are on Planet ");
             Console.WriteLine(CheckLocation());
-            //if (ship.shipX == earth.planetX && ship.shipY == earth.planetY)
-            //{
-            //    Console.WriteLine($"{earth.name}!");
-            //}
-            //if (ship.shipX == jupiter.planetX && ship.shipY == jupiter.planetY)
-            //{
-            //    Console.WriteLine($"{jupiter.name}!");
-            //}
-            //if (ship.shipX == alpha.planetX && ship.shipY == alpha.planetY)
-            //{
-            //    Console.WriteLine($"{alpha.name}!");
-            //}
-            //if (ship.shipX == unknown.planetX && ship.shipY == unknown.planetY)
-            //{
-            //    Console.WriteLine($"{unknown.name}!");
-            //}
-            //if (ship.shipX == tatooine.planetX && ship.shipY == tatooine.planetY)
-            //{
-            //    Console.WriteLine($"{tatooine.name}!");
-            //}
 
             //Displays planet options to travel to
             Console.WriteLine("\nHere are the planets in our system:");
@@ -651,227 +638,6 @@ namespace Lab_4C_SpaceGame
             Choices();
         }
     }//End SpaceGame Class
-
-
-        /*
-    //Choosing of which animal to play with
-    public static void TimeToPlay()
-    {
-        int animalChoice;
-        Console.Clear();
-        Console.WriteLine("\nRemember, Here is your current Farm:");
-        Console.WriteLine("Animal\t\t# on Farm");
-        Console.WriteLine("---------------------------");
-        Console.WriteLine($"1) Horse\t{Horse.numOfHorses}");
-        Console.WriteLine($"2) Cow\t\t{Cow.numOfCows}");
-        Console.WriteLine($"3) Chicken\t{Chicken.numOfChickens}");
-        Console.WriteLine($"4) Pig\t\t{Pig.numOfPigs}");
-        Console.WriteLine("5) Buy more anmials");
-        Console.Write("\nWhich animal would like to play with? [1-5]: ");
-        try
-        {
-            animalChoice = Convert.ToInt32(Console.ReadLine());
-        }
-        catch (Exception)
-        {
-            animalChoice = -1;
-        }
-        switch (animalChoice)
-        {
-            case 1: //Horse
-                {
-                    if (Horse.numOfHorses == 0)
-                    {
-                        Console.WriteLine("\nYou don't have any horses!");
-                        Continue();
-                        TimeToPlay();
-                    }
-                    Activity(1);
-                    break;
-                }
-            case 2: //Cow
-                {
-                    if (Cow.numOfCows == 0)
-                    {
-                        Console.WriteLine("\nYou don't have any cows!");
-                        Continue();
-                        TimeToPlay();
-                    }
-                    Activity(2);
-                    break;
-                }
-            case 3: //Chicken
-                {
-                    if (Chicken.numOfChickens == 0)
-                    {
-                        Console.WriteLine("\nYou don't have any chickens!");
-                        Continue();
-                        TimeToPlay();
-                    }
-                    Activity(3);
-                    break;
-                }
-            case 4: //Pig
-                {
-                    if (Pig.numOfPigs == 0)
-                    {
-                        Console.WriteLine("\nYou don't have any pigs!");
-                        Continue();
-                        TimeToPlay();
-                    }
-                    Activity(4);
-                    break;
-                }
-            case 5:
-                PickAnimal();
-                break;
-            default:
-                {
-                    Console.WriteLine("\nWe don't have that kind of animal on this Farm??");
-                    Continue();
-                    TimeToPlay();
-                    break;
-                }
-        }
-        Console.WriteLine("That was Fun");
-    }
-
-    //Action selection for the animal chosen
-    public static void Activity(int animalNum)
-    {
-        Horse mrEd = new Horse("Mr. Ed");
-        Pig porky = new Pig("Porky");
-        Chicken rooster = new Chicken("Mr. Clucks");
-        Cow hershey = new Cow("Hershey");
-        Console.Clear();
-        int actionNum = 0;
-        Console.WriteLine("\n#\tAction");
-        Console.WriteLine("---------------");
-        Console.WriteLine("1)\tSpeak");
-        Console.WriteLine("2)\tWalk");
-        Console.WriteLine("3)\tEat");
-        Console.WriteLine("4)\tSleep");
-        Console.WriteLine("5)\tBacon");
-        Console.WriteLine("6)\tPick a different animal");
-        Console.WriteLine("7)\tLeave the Farm");
-        Console.Write("\nWhat would you like to do with your ");
-        switch (animalNum)
-        {
-            case 1:
-                Console.Write("Horse?");
-                break;
-            case 2:
-                Console.Write("Cow?");
-                break;
-            case 3:
-                Console.Write("Chicken?");
-                break;
-            case 4:
-                Console.Write("Pig?");
-                break;
-            default:
-                Console.WriteLine("That is not something the animals know how to do!?");
-                Console.WriteLine("Lets make sure we have the right animal.");
-                Continue();
-                TimeToPlay();
-                break;
-        }
-        Console.Write(" [1-7]: ");
-        try
-        {
-            actionNum = Convert.ToInt32(Console.ReadLine());
-        }
-        catch (Exception)
-        {
-            Console.WriteLine("\nThat is not something the animals know how to do!?");
-            Console.WriteLine("Lets make sure we have the right animal.");
-            Continue();
-            TimeToPlay();
-        }
-        Console.WriteLine("");
-        switch (10 * animalNum + actionNum)
-        {
-            //Horse cases
-            case 11:
-                mrEd.Speak();
-                break;
-            case 12:
-                mrEd.walk();
-                break;
-            case 13:
-                mrEd.eat();
-                break;
-            case 14:
-                mrEd.sleep();
-                break;
-            case 15:
-            case 25:
-            case 35:
-                Console.WriteLine("\nThis action is only for pigs...");
-                break;
-            //Cow Cases
-            case 21:
-                hershey.Speak();
-                break;
-            case 22:
-                hershey.walk();
-                break;
-            case 23:
-                hershey.eat();
-                break;
-            case 24:
-                hershey.sleep();
-                break;
-            //Chicken cases
-            case 31:
-                rooster.Speak();
-                break;
-            case 32:
-                rooster.walk();
-                break;
-            case 33:
-                rooster.eat();
-                break;
-            case 34:
-                rooster.sleep();
-                break;
-            //Pig Cases
-            case 41:
-                porky.Speak();
-                break;
-            case 42:
-                porky.walk();
-                break;
-            case 43:
-                porky.eat();
-                break;
-            case 44:
-                porky.sleep();
-                break;
-            case 45:
-                porky.Bacon();
-                break;
-            //Pick a different animal cases
-            case 16:
-            case 26:
-            case 36:
-            case 46:
-                TimeToPlay();
-                break;
-            //Leave the Famr cases
-            case 17:
-            case 27:
-            case 37:
-            case 47:
-                Farewell();
-                break;
-        }
-        Continue();
-        TimeToPlay();
-    }
-    */
-    
-    
 
     //Human Player Class
     public class Player
