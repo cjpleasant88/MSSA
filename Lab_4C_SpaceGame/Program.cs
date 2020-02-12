@@ -7,6 +7,7 @@ namespace Lab_4C_SpaceGame
     {
         static void Main(string[] args)
         {
+            // Game Intro Grpahic
             Console.WriteLine("\tLab_4C_SpaceGame.Program.Main()\n");
             string gameTitle = @"
      ________  ________  ________  ________  _______           ________  ________  _____ ______   _______      
@@ -33,25 +34,38 @@ namespace Lab_4C_SpaceGame
             Console.WriteLine(gameTitle);
             SpaceGame.Continue();
             Console.Clear();
+
+            //Game Starts and to ask user for help
             SpaceGame.Welcome();
+
+            //If User says no or timer runs out, game ends with FareWell()
             SpaceGame.Farewell();
         }
     }
 
+    //Space Game class
     public class SpaceGame
     {
+        //Gamer Variables
+        static double timer = 100.00; //Maybe add difficulty level and decrease time to make harder?
+        static double scavengeTime = .25;
+
+        //player created
         static Player hero = new Player();
+
+        //5 Planets created for game Planet(Name, X, Y, TradeConversion)
         static Planet earth = new Planet("Earth", 3, 1, 1);
         static Planet jupiter = new Planet("Jupiter", 1, 4, 1);
         static Planet alpha = new Planet("Alpha Cantauri B", 12, 2, 1);
         static Planet unknown = new Planet("Unknown", 11, 4, 1);
         static Planet tatooine = new Planet("Tatooine", 3, 15, 1);
+
+        //User Ship created
         static Ship ship = new Ship();
         static Random random = new Random();
-        static double timer = 100.00;
-        static double scavengeTime = .25;
-        static double travelTime = 1.0;
+        static double travelTime = 1.0; //maybe decrease time when ship is upgraded?
 
+        //Asks User if they want to play the game
         public static void Welcome()
         {
             ship.level = 1;
@@ -78,14 +92,14 @@ namespace Lab_4C_SpaceGame
             }
         }
 
-        //common lines used in simple method
+        //Commonly used code put into a method
         public static void Continue()
         {
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
 
-        //ending method
+        //Bad Ending if  user says no to play or timer runs out
         public static void Farewell()
         {
             Console.WriteLine("\n100 Days have passed.");
@@ -94,7 +108,7 @@ namespace Lab_4C_SpaceGame
             System.Environment.Exit(1);
         }
 
-        //StoryLine for planet
+        //StoryLine for Space Game
         public static void StoryLine()
         {
             Console.Clear();
@@ -120,13 +134,9 @@ namespace Lab_4C_SpaceGame
             Choices();
         }
 
-        //The buying and tracking of animals
+        //The Generic Action Choices Method for any planet
         public static void Choices()
         {
-            int costOfScavenge = 0;
-            int travelToAlpha = 60;
-            int travelToJupiter = 20;
-            int travelToUnkown = 300;
             double scavengeCost = 0.25;
             int fuelCost = 12;
             
@@ -137,12 +147,12 @@ namespace Lab_4C_SpaceGame
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write($"{hero.credits}");
             Console.ResetColor();
-            Console.WriteLine(" credits to spend on supplies on Earth");
+            Console.Write(" credits to spend on supplies on ");
 
+            //Checks which planet you are on and displays it for the above Console.WriteLine
+            Console.WriteLine(CheckLocation());
 
-
-          //  if (credits < )
-              //  NotEnoughMoney();
+            //Displays List of Actions
             Console.WriteLine("\nHere is a list of actions to take:");
             Console.WriteLine("\n#\tAction\t\t\tCost");
             Console.WriteLine("----------------------------------------");
@@ -153,10 +163,9 @@ namespace Lab_4C_SpaceGame
             Console.WriteLine("5)\tView Map\t\t0");
             Console.WriteLine("6)\tView Ship Contents\t0");
 
+            //Gets User input for selection and makes sure it is an integer
             Console.Write("\nWhat action would you like to take? [1-6]: ");
             Console.WriteLine("");
-            
-            
             try
             {
                 choice = Convert.ToInt32(Console.ReadLine());
@@ -165,6 +174,8 @@ namespace Lab_4C_SpaceGame
             {
                 choice = -1;
             }
+
+            //Switch case for a particular action
             switch (choice)
             {
                 case 1: //Scavenge
@@ -180,18 +191,24 @@ namespace Lab_4C_SpaceGame
                         if (ship.shipX == alpha.planetX && ship.shipY == alpha.planetY)
                         {
                             //ScavengeAlpha();
+                            Console.WriteLine("// TODO: Write a ScavengeAlpha Method");
                         }
                         if (ship.shipX == unknown.planetX && ship.shipY == unknown.planetY)
                         {
                             //ScavengeUnknown();
+                            Console.WriteLine("// TODO: Write a ScavengeUnknown Method");
                         }
-                        Console.WriteLine("// TODO: ");
+                        if (ship.shipX == tatooine.planetX && ship.shipY == tatooine.planetY)
+                        {
+                            //ScavengeTatooine();
+                            Console.WriteLine("// TODO: Write a ScavengeTatooine Method");
+                        }
                         Continue();
                         break;
                     }
                 case 2: //Buy Fuel
                     {
-                        Console.WriteLine("// TODO: ");
+                        Console.WriteLine("// TODO: Write a BuyFuel Method");
                         Continue();
                         break;
                     }
@@ -207,7 +224,7 @@ namespace Lab_4C_SpaceGame
                     }
                 case 5: //View Map
                     {
-                        Console.WriteLine("// TODO: ");
+                        Console.WriteLine("// TODO: Write a View Map Method");
                         Continue();
                         break;
                     }
@@ -217,7 +234,7 @@ namespace Lab_4C_SpaceGame
                         Continue();
                         break;
                     }
-                case 99:
+                case 99: //Easter Egg to give 100 credits to player
                     hero.credits += 100;
                     break;
                 default:
@@ -231,11 +248,14 @@ namespace Lab_4C_SpaceGame
             Choices();
         }
 
+        //Method that shows Ship level and available upgrades
         public static void Upgrade()
         {
             int choice;
             Console.Clear();
             Console.WriteLine($"Your ship is currently Level {ship.level}\n");
+
+            //Switch case to determine what the user sees available depending on their ship level
             switch (ship.level)
             {
                 case 1:
@@ -250,10 +270,14 @@ namespace Lab_4C_SpaceGame
                     Choices();
                     break;
             }
+
+            //List the options the user can choose from
             Console.WriteLine("1)\tNevermind");
             Console.WriteLine("2)\tLevel 2 Upgrade");
             Console.WriteLine("3)\tLevel 3 Upgrade");
             Console.Write("\nWhich upgrade would like: ");
+
+            //Gets the user option and makes sure it is valid
             try
             {
                 choice = Convert.ToInt32(Console.ReadLine());
@@ -301,6 +325,8 @@ namespace Lab_4C_SpaceGame
             Continue();
             Choices();
         }
+
+        //Displays a rocket depending on Ship Level when traveling
         public static void Travel()
         {
             string rocket1 = @"
@@ -377,6 +403,7 @@ namespace Lab_4C_SpaceGame
             Continue();
         }
 
+        //Display when buying and credits are not enough
         public static void NotEnoughCredits()
         {
                 Console.WriteLine($"\n{hero.credits} is not enough to buy that, what now?.");
@@ -384,6 +411,7 @@ namespace Lab_4C_SpaceGame
                 Choices();
         }
 
+        //Randomly gain items Earth Specific
         public static void ScavengeEarth()
         {
             Console.Clear();
@@ -414,6 +442,8 @@ namespace Lab_4C_SpaceGame
             Continue();
             Choices();
         }
+
+        //Randomly gain items Jupiter Specific
         public static void ScavengeJupiter()
         {
             Console.Clear();
@@ -439,31 +469,38 @@ namespace Lab_4C_SpaceGame
             Continue();
             Choices();
         }
+
+        //When travel action is selected, user gets asked which planet to travel to
         public static void WhichPlanet()
         {
             int choice;
             Console.Clear();
+
+            //Determines which planet they are on
             Console.Write("\tYou are on Planet ");
-            if (ship.shipX == earth.planetX && ship.shipY == earth.planetY)
-            {
-                Console.WriteLine($"{earth.name}!");
-            }
-            if (ship.shipX == jupiter.planetX && ship.shipY == jupiter.planetY)
-            {
-                Console.WriteLine($"{jupiter.name}!");
-            }
-            if (ship.shipX == alpha.planetX && ship.shipY == alpha.planetY)
-            {
-                Console.WriteLine($"{alpha.name}!");
-            }
-            if (ship.shipX == unknown.planetX && ship.shipY == unknown.planetY)
-            {
-                Console.WriteLine($"{unknown.name}!");
-            }
-            if (ship.shipX == tatooine.planetX && ship.shipY == tatooine.planetY)
-            {
-                Console.WriteLine($"{tatooine.name}!");
-            }
+            Console.WriteLine(CheckLocation());
+            //if (ship.shipX == earth.planetX && ship.shipY == earth.planetY)
+            //{
+            //    Console.WriteLine($"{earth.name}!");
+            //}
+            //if (ship.shipX == jupiter.planetX && ship.shipY == jupiter.planetY)
+            //{
+            //    Console.WriteLine($"{jupiter.name}!");
+            //}
+            //if (ship.shipX == alpha.planetX && ship.shipY == alpha.planetY)
+            //{
+            //    Console.WriteLine($"{alpha.name}!");
+            //}
+            //if (ship.shipX == unknown.planetX && ship.shipY == unknown.planetY)
+            //{
+            //    Console.WriteLine($"{unknown.name}!");
+            //}
+            //if (ship.shipX == tatooine.planetX && ship.shipY == tatooine.planetY)
+            //{
+            //    Console.WriteLine($"{tatooine.name}!");
+            //}
+
+            //Displays planet options to travel to
             Console.WriteLine("\nHere are the planets in our system:");
             Console.WriteLine($"1)\t{earth.name}");
             Console.WriteLine($"2)\t{jupiter.name}");
@@ -471,6 +508,8 @@ namespace Lab_4C_SpaceGame
             Console.WriteLine($"4)\t{unknown.name}");
             Console.WriteLine($"5)\t{tatooine.name}");
             Console.WriteLine($"6)\tBack to Choices");
+
+            //Asks user for selection and validates it is an integer
             Console.WriteLine("\nWhere would you like to go");
             try
             {
@@ -481,6 +520,7 @@ namespace Lab_4C_SpaceGame
                 choice = -1;
             }
 
+            //Makes sure user is not already on that planet and then changes location of ship
             switch (choice)
             {
 
@@ -561,6 +601,7 @@ namespace Lab_4C_SpaceGame
             }
         }
 
+        //Returns a string with the planet that user is currently on
         public static string CheckLocation()
         {
             string onPlanet = "";
@@ -587,6 +628,7 @@ namespace Lab_4C_SpaceGame
             return onPlanet;
         }
 
+        //Displays all contents the user has as well as ship information
         public static void ShowInventory()
         {
             Console.Clear();
@@ -608,7 +650,7 @@ namespace Lab_4C_SpaceGame
             Continue();
             Choices();
         }
-    }
+    }//End SpaceGame Class
 
 
         /*
@@ -834,6 +876,7 @@ namespace Lab_4C_SpaceGame
     //Human Player Class
     public class Player
     {
+        //Player attributes
         public int credits = 0;
         public string name = "No-Name";
         public int iron = 0;
@@ -844,14 +887,16 @@ namespace Lab_4C_SpaceGame
         public int seeds = 0;
         public int hydrogen = 0;
 
+        //Default Constructor
         public Player()
         {
 
         }
-    }
+    }//End Player class
 
     public class Ship
     {
+        //Ship attributes
         public string name = "No-Name";
         public int fuel = 10;
         public int shipX = 3;
@@ -859,19 +904,22 @@ namespace Lab_4C_SpaceGame
         public int level = 1;
         public int capacity = 40;
 
+        //Default Constructor
         public Ship()
         {
 
         }
-    }
+    }//End Ship Class
 
     public class Planet
     {
+        //Planet attributes
         public string name;
         public double conversionRate;
         public int planetX;
         public int planetY;
 
+        //Planet constructor
         public Planet(string name, int x, int y, double rate)
         {
             this.name =name;
@@ -879,172 +927,6 @@ namespace Lab_4C_SpaceGame
             this.planetY = y;
             this.conversionRate = rate;
         }
-
-    }
-
-    //Horse class and methods
-    public class Horse
-    {
-        public static int numOfHorses = 0;
-        string name;
-        int age;
-
-        public Horse()
-        {
-            name = "No-Name-Horse";
-            age = 0;
-            numOfHorses++;
-        }
-
-        public Horse(string name)
-        {
-            this.name = name;
-        }
-
-        public void Speak()
-        {
-            Console.WriteLine($"Horses make a neigh noise! {this.name} says Hello!");
-        }
-
-        public void walk()
-        {
-            Console.WriteLine($"Yeah, 'bout time you took {this.name} for a walk");
-        }
-
-        public void eat()
-        {
-            Console.WriteLine($"{this.name} says thanks for the grub!");
-        }
-
-        public void sleep()
-        {
-            Console.WriteLine($"ZzZzZzz...shhhhh, {this.name} is sleeping now");
-        }
-    }
-
-    //Pig Class and methods
-    public class Pig
-    {
-        public static int numOfPigs = 0;
-        string name;
-        int age;
-
-        public Pig()
-        {
-            name = "No-Named-Pig";
-            age = 0;
-            numOfPigs++;
-        }
-
-        public Pig(string name)
-        {
-            this.name = name;
-        }
-
-        public void Speak()
-        {
-            Console.WriteLine($"Your pig {this.name} said Oink-oink.");
-        }
-
-        public void walk()
-        {
-            Console.WriteLine($"{this.name} doesn't go very fast.");
-        }
-
-        public void eat()
-        {
-            Console.WriteLine($"{this.name} will eat anything!");
-        }
-
-        public void sleep()
-        {
-            Console.WriteLine($"{this.name} snorts while they sleep.");
-        }
-
-        public void Bacon()
-        {
-            Console.WriteLine($"{this.name} is not happy about this, but understands the temptation.");
-        }
-    }
-
-    //Chicken Class and methods
-    public class Chicken
-    {
-        public static int numOfChickens = 0;
-        string name;
-        int age;
-
-        public Chicken()
-        {
-            name = "No-Name-Chicken";
-            age = 0;
-            numOfChickens++;
-        }
-
-        public Chicken(string name)
-        {
-            this.name = name;
-        }
-
-        public void Speak()
-        {
-            Console.WriteLine($"{this.name} clucks rather early in the day.");
-        }
-
-        public void walk()
-        {
-            Console.WriteLine($"{this.name} likes to fly to get around more than walk.");
-        }
-
-        public void eat()
-        {
-            Console.WriteLine($"{this.name} says thanks for the chicken seed!");
-        }
-
-        public void sleep()
-        {
-            Console.WriteLine($"Night night {this.name}");
-        }
-    }
-
-    //Cow Class and methods
-    public class Cow
-    {
-        public static int numOfCows = 0;
-        string name;
-        int age;
-
-        public Cow()
-        {
-            name = "No-Name-Cow";
-            age = 0;
-            numOfCows++;
-        }
-
-        public Cow(string name)
-        {
-            this.name = name;
-        }
-
-        public void Speak()
-        {
-            Console.WriteLine($"{this.name} says moo");
-        }
-
-        public void walk()
-        {
-            Console.WriteLine($"{this.name} says moo more walking!");
-        }
-
-        public void eat()
-        {
-            Console.WriteLine($"{this.name} says moo food!");
-        }
-
-        public void sleep()
-        {
-            Console.WriteLine($"{this.name} jumped over the moooon!");
-        }
-    }
-}
+    }//End Planet Class
+}//End NameSpace
 
