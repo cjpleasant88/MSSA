@@ -43,7 +43,7 @@ namespace EX_6A_Manipulating_Arrays
             Console.Write("Rotating Array B to Right 2 places gives: ");
             RotateArray("Right", 2, arrayB);
             Console.Write("Rotating Array C to Left 4 places gives: ");
-            RotateArray("Left", 47, arrayC);
+            RotateArray("Left", 4, arrayC);
 
             Console.WriteLine("\n*********************SORTING ARRAYS*********************");
             Console.Write("\nSorting Array A gives: ");
@@ -101,6 +101,11 @@ namespace EX_6A_Manipulating_Arrays
             {
                 case "Right":
                 case "right":
+                    if ( places < 0)
+                    {
+                        places = Math.Abs(places);
+                        goto case "Left";
+                    }
                     for (int i = 0; i < array.Length; i++)
                     {
                         temp[(i + places) % length] = array[i];
@@ -110,9 +115,14 @@ namespace EX_6A_Manipulating_Arrays
                     break;
                 case "Left":
                 case "left":
+                    if (places < 0)
+                    {
+                        places = Math.Abs(places);
+                        goto case "Right";
+                    }
                     for (int i = 0; i < array.Length; i++)
                     {
-                        temp[(i + Math.Abs((length - places))) % length] = array[i];
+                        temp[(i + length - (places % length)) % length] = array[i];
                     }
                     DisplayArray(temp);
                     break;
