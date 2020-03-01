@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EX_6A_Manipulating_Arrays",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EX_1A_Mathematical_Formulas", "EX1A_Mathematical_Formulas\EX_1A_Mathematical_Formulas.csproj", "{FF913131-7B23-45B2-83C7-7ACC9D38E06C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EX_7A_MilitaryUnit", "EX_7A_MilitaryUnit\EX_7A_MilitaryUnit.csproj", "{108AA6C9-6D40-4E69-94BB-D2509E7683AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{FF913131-7B23-45B2-83C7-7ACC9D38E06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF913131-7B23-45B2-83C7-7ACC9D38E06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF913131-7B23-45B2-83C7-7ACC9D38E06C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{108AA6C9-6D40-4E69-94BB-D2509E7683AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108AA6C9-6D40-4E69-94BB-D2509E7683AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108AA6C9-6D40-4E69-94BB-D2509E7683AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108AA6C9-6D40-4E69-94BB-D2509E7683AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
