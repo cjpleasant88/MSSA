@@ -1,0 +1,69 @@
+﻿@model Product[]
+
+@{
+    //Layout = "_BasicLayout";
+    ViewBag.Title = "Product Name";
+}
+
+    <table>
+        <thead>
+            <tr><th>Name</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+            @foreach (Product p in Model)
+            {
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@($"{p.Price:C2}")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+@*<div data-productid="@Model.ProductID" data-stocklevel="@ViewBag.StockLevel">
+    <p>Product Name: @Model.Name</p>
+    <p>Product Price: @($"{Model.Price:C2}")</p>
+    <p>
+        Stock Level:
+        @if (ViewBag.StockLevel == 0)
+        {
+            @:Out of Stock
+        }
+        else if (ViewBag.StockLevel > 0 && ViewBag.StockLevel <= 3)
+        {
+            <b>Low Stock (@ViewBag.StockLevel)</b>
+        }
+        else
+        {
+            @: @ViewBag.StockLevel In Stock
+        }
+    </p>
+</div>*@
+
+@*@switch (ViewBag.StockLevel)
+    {
+        case 0:
+            @:Out of Stock
+            break;
+        case 1:
+        case 2:
+        case 3:
+            <b>Low Stock (@ViewBag.StockLevel)</b>
+            break;
+        default:
+            @: @ViewBag.StickLevel In Stock
+            break;
+    }*@
+
+@*<!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    </head>
+    <body>
+        @Model.Name
+    </body>
+    </html>*@
