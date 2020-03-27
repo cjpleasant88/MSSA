@@ -47,9 +47,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsStore", "SportsStore\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SportsStore.Tests", "SportsStore.Tests\SportsStore.Tests.csproj", "{01A201DF-3CC0-4419-9F26-7F68C25E38AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalebsSportsStore", "CalebsSportsStore\CalebsSportsStore.csproj", "{E022DAEB-163B-43CA-9FEC-C0B604A44E9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalebsSportsStore", "CalebsSportsStore\CalebsSportsStore.csproj", "{E022DAEB-163B-43CA-9FEC-C0B604A44E9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalebsSportsStore.Tests", "CalebsSportsStore.Tests\CalebsSportsStore.Tests.csproj", "{E9331012-1382-4785-B690-FAB471F33DF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalebsSportsStore.Tests", "CalebsSportsStore.Tests\CalebsSportsStore.Tests.csproj", "{E9331012-1382-4785-B690-FAB471F33DF0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA421_EX_1B_Key_Value_Store", "ISTA421_EX_1B_Key_Value_Store\ISTA421_EX_1B_Key_Value_Store.csproj", "{51CA7AA4-9A7C-41B6-8086-A650B3017637}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ContosoUniversityData", "ContosoUniversityData\ContosoUniversityData.sqlproj", "{990B82A8-F590-447B-BA21-321222FB70C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoSite", "ContosoSite\ContosoSite.csproj", "{012BA3E7-F66E-43F0-A3DF-AD4A6AE3A70D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcMovie", "MvcMovie\MvcMovie.csproj", "{46777899-90F3-4FEB-9E72-DC614F1742B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTA_421_EX_1E_BaseNumberConversion", "ISTA_421_EX_1E_BaseNumberConversion\ISTA_421_EX_1E_BaseNumberConversion.csproj", "{D817736A-B456-4CDE-934E-25A3EA53B9F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +163,28 @@ Global
 		{E9331012-1382-4785-B690-FAB471F33DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9331012-1382-4785-B690-FAB471F33DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9331012-1382-4785-B690-FAB471F33DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51CA7AA4-9A7C-41B6-8086-A650B3017637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51CA7AA4-9A7C-41B6-8086-A650B3017637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51CA7AA4-9A7C-41B6-8086-A650B3017637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51CA7AA4-9A7C-41B6-8086-A650B3017637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{990B82A8-F590-447B-BA21-321222FB70C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990B82A8-F590-447B-BA21-321222FB70C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990B82A8-F590-447B-BA21-321222FB70C6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{990B82A8-F590-447B-BA21-321222FB70C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990B82A8-F590-447B-BA21-321222FB70C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{990B82A8-F590-447B-BA21-321222FB70C6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{012BA3E7-F66E-43F0-A3DF-AD4A6AE3A70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012BA3E7-F66E-43F0-A3DF-AD4A6AE3A70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012BA3E7-F66E-43F0-A3DF-AD4A6AE3A70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012BA3E7-F66E-43F0-A3DF-AD4A6AE3A70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46777899-90F3-4FEB-9E72-DC614F1742B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46777899-90F3-4FEB-9E72-DC614F1742B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46777899-90F3-4FEB-9E72-DC614F1742B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46777899-90F3-4FEB-9E72-DC614F1742B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D817736A-B456-4CDE-934E-25A3EA53B9F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D817736A-B456-4CDE-934E-25A3EA53B9F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D817736A-B456-4CDE-934E-25A3EA53B9F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D817736A-B456-4CDE-934E-25A3EA53B9F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
