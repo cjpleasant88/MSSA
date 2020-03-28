@@ -16,10 +16,12 @@ namespace Lab_4C_SpaceGame
     public class SpaceGame
     {
         //Gamer Variables
+        //public static double GameTimer { get; }
+
         static double timer = 60.00;                // Maybe add difficulty level and decrease time to make harder?
         public static double gameTime = 0;          // keeps track of total scavenege and travel time
         public static double scavengeTime = .25;
-        public static double travelRatio = 1.7;     // Used to adjust travel time to sensible numbers 
+        public static double travelRatio = 1.7;     // Used during testing to adjust travel time to sensible numbers 
         public static int fuelCost = 12;
 
 
@@ -36,7 +38,7 @@ namespace Lab_4C_SpaceGame
 
         //User Ship created
         public static Ship ship = new Ship();
-        static Random random = new Random();
+        static readonly Random random = new Random();
 
         //Trade Prices for Items
         public static int priceSalt = 2;
@@ -88,7 +90,7 @@ namespace Lab_4C_SpaceGame
         //Asks User if they want to play the game
         public static void Welcome()
         {
-            ship.level = 1;
+            ship.Level = 1;
             Console.WriteLine("*****************************************************************************************");
             Console.WriteLine("*\t\t\tHURRY! Wake up! We need your help.....                          *");
             Console.WriteLine("*                                                                                       *");
@@ -478,10 +480,10 @@ namespace Lab_4C_SpaceGame
             int choice;
             Console.Clear();
             Timer();
-            Console.WriteLine($"Your ship is currently Level {ship.level}\n");
+            Console.WriteLine($"Your ship is currently Level {ship.Level}\n");
 
             //Switch case to determine what the user sees available depending on their ship level
-            switch (ship.level)
+            switch (ship.Level)
             {
                 case 1:
                     Console.WriteLine("For 100 credits, Ship Level 2 will allow you to carry 1000 items");
@@ -523,13 +525,13 @@ namespace Lab_4C_SpaceGame
                     {
                         NotEnoughCredits();
                     }
-                    ship.level = 2;
+                    ship.Level = 2;
                     hero.credits -= 100;
-                    ship.capacity = 1000;
+                    ship.Capacity = 1000;
                     Console.WriteLine("\nYou can now hold more cargo and the weight of larger items.....like a WARP engine!");
                     break;
                 case 3:
-                    if (ship.level == 1)
+                    if (ship.Level == 1)
                     {
                         Console.WriteLine("\nYou need to upgrade to level 2 before your ship can handle the WARP engine.");
                         Continue();
@@ -539,7 +541,7 @@ namespace Lab_4C_SpaceGame
                     {
                         NotEnoughCredits();
                     }
-                    ship.level = 3;
+                    ship.Level = 3;
                     hero.credits -= 150;
                     Console.WriteLine("\nNothing is stopping you from obtaining UnObtanium now...Go get it!");
                     break;
@@ -718,7 +720,7 @@ namespace Lab_4C_SpaceGame
                     }
                 case 3: //Alpha
                     {
-                        if (ship.level != 3)
+                        if (ship.Level != 3)
                         {
                             goto case -3;
                         }
@@ -732,7 +734,7 @@ namespace Lab_4C_SpaceGame
                     }
                 case 4: //Unknown
                     {
-                        if (ship.level != 3)
+                        if (ship.Level != 3)
                         {
                             goto case -3;
                         }
@@ -799,9 +801,9 @@ namespace Lab_4C_SpaceGame
             Console.WriteLine($"Dark Matter:\t{hero.darkMatter}");
             Console.WriteLine($"UnObtanium:\t{hero.unobtanium}");
             Console.WriteLine("\nShip Statistics:");
-            Console.WriteLine($"Your ship level is Level {ship.level}");
-            Console.WriteLine($"Your ship has {ship.fuel} units of fuel remaining");
-            Console.WriteLine($"Your ship's capacity is currently {itemSum} / {ship.capacity}");
+            Console.WriteLine($"Your ship level is Level {ship.Level}");
+            Console.WriteLine($"Your ship has {ship.Fuel} units of fuel remaining");
+            Console.WriteLine($"Your ship's capacity is currently {itemSum} / {ship.Capacity}");
             Continue();
             Choices();
         }//End Show Inventory

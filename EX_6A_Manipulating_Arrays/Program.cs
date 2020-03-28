@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 
 namespace EX_6A_Manipulating_Arrays
 {

@@ -4,33 +4,23 @@ namespace EX_7A_MilitaryUnit
 {
     class Program
     {
-        //initiates random variable
-        public static Random random = new Random();
+        //Creates instance of a MilitaryUnit
+        static MilitaryUnit unit = new MilitaryUnit();
 
-        //calculates the total number of names in the enumeration for future random number calculations
-        public static int nameCount = Enum.GetNames(typeof(Names)).Length;
-
-        //Declares an array of the same length as the Names enumeration
-        public static int[] usedNames = new int[nameCount];
-
-        //keeps track of how many names have been given out
-        public static int namePlace = 0;
+        //Initiates variables to keep track of personnel to create
+        private static int officerNumber;
+        private static int enlistedNumber;
+        private static int recruitNumber;
 
         public static void Main(string[] args)
         {
             //Assigns all values in the usedNames array all to -1
-            for (int i = 0; i < nameCount; i++)
+            for (int i = 0; i < unit.nameCount; i++)
             {
-                usedNames[i] = -1;
+                unit.usedNames[i] = -1;
             }
 
             Console.WriteLine("\n\tEX_7A_MilitaryUnit.Program.Main()\n");
-
-            //Initiates variables to keep track of personnel to create
-            int officerNumber;
-            int enlistedNumber;
-            int recruitNumber;
-
 
             Console.WriteLine("\nWelcome to Camp MSSA");
             Console.WriteLine("\nOur mission is to go from Point A to Point B in whatever mode of \ntransportation you have and fight a band of enemy resistance.");
@@ -173,7 +163,6 @@ namespace EX_7A_MilitaryUnit
             Console.WriteLine("\nWith all of this Firepower, you overwhelmed the enemy and took control of Point B.");
             Continue();
             Console.WriteLine("\nYou are celebrated for you victory upon your arrival back home!");
-
         }//End Main
 
         public static void Continue()
@@ -182,169 +171,37 @@ namespace EX_7A_MilitaryUnit
             Console.ReadKey();
         }
 
+        //Used to assign Disctinct Names for anything from the Person class
         public static string GetName()
         {
             bool notUsed;
             string name;
             int enumName;
+
+            //Gets a name from the enum list
+            //if (int)name is in the usedNames array, randomly gets another name fro enum list
             do
             {
                 notUsed = true;
-                enumName = random.Next(nameCount);
+                enumName = unit.random.Next(unit.nameCount);
                 name = ((Names)(enumName)).ToString();
-                for (int i = 0; i < namePlace; i++)
+                for (int i = 0; i < unit.namePlace; i++)
                 {
-                    if (usedNames[i] == enumName)
+                    if (unit.usedNames[i] == enumName)
                     {
                         notUsed = false;
                     }
                 }
             } while (notUsed == false);
-            usedNames[namePlace] = enumName;
-            namePlace++;
+
+            //adds the new name to the used Names array
+            unit.usedNames[unit.namePlace] = enumName;
+
+            //increases the namePlace to track the next index to store a name
+            unit.namePlace++;
+
+            //returns the name
             return name;
         }
     }//End Program Class
-
-    public enum Names { Danny, Anthony, Caleb, Chris_O, Jeremy, Brandon, Oscar, Sheufella, Richard, Rodrigo, Jonesy, Josh, Wei, Chris_S, Cameron, Phillip, Zach, Elijah, Marco, Lien }
-
-    //Vehicle Related Classes
-    public class Vehicle
-    {
-        public int fuel;
-        public int travelCost;
-        public string name;
-
-        //*************Vehicle Related Classes*****************
-
-        //Default Constructor for Base class Vehicle
-        public Vehicle()
-        {
-            name = "Safety-Vic";
-            fuel = 100;
-            travelCost = 3;
-        }
-
-        public void DisplayFuel()
-        {
-            Console.WriteLine($"\tYou have {this.fuel} units of fuel remaining.");
-        }
-    }
-
-    //Tank Class derived from Vehicle Class
-    public class Tank : Vehicle
-    {
-        public Tank() : base()
-        {
-            name = "AAV";
-            travelCost = 10;
-        }
-    }
-
-    //Helicopter Class from Base Class Vehicle
-    public class Helicopter : Vehicle
-    {
-        public Helicopter() : base()
-        {
-            name = "Osprey";
-            travelCost = 15;
-        }
-    }
-
-    //*************Weapon Related Classes*****************
-
-    //Weapon Base Class
-    public class Weapon
-    {
-        public string name;
-
-        public Weapon()
-        {
-            this.name = "Knife Hands";
-        }
-    
-        public virtual void Reload()
-        {
-            Console.WriteLine("You reloaded the weapon");
-        }
-    }
-
-    //Sword class derived from Weapon Class
-    public class Sword : Weapon
-    {
-        public Sword() : base()
-        {
-            this.name = "Mameluke Sword";
-        }
-    }
-
-    //KnifeHands Calss derived from Weapon Class
-    public class KnifeHands : Weapon
-    {
-        public KnifeHands() : base()
-        {
-            this.name = "Rifle";
-        }
-    }
-
-    //*************Person Related Classes*****************
-
-    //Base Class Person
-    public class Person
-    {
-        public string name;
-        public Vehicle myVehicle;
-        public Weapon myWeapon;
-
-        //Generic Person
-        public Person()
-        {
-            this.name = "Recruit";
-            this.myVehicle = new Vehicle();
-            this.myWeapon = new Weapon();
-        }
-
-        public virtual void Travel()
-        {
-            Console.WriteLine($"Recruit {this.name} traveled from A to B slowly.");
-            this.myVehicle.fuel -= this.myVehicle.travelCost;
-            //this.myVehicle.DisplayFuel();
-        }
-    }
-
-    //Officer from Base Class Person
-    public class Officer : Person
-    {
-        public Officer() : base()
-        {
-            this.name = "Sir";
-            this.myVehicle = new Helicopter();
-            this.myWeapon = new Sword();
-        }
-
-        public override void Travel()
-        {
-            Console.WriteLine($"Officer {this.name} flew from A to B.");
-            this.myVehicle.fuel -= this.myVehicle.travelCost;
-            //this.myVehicle.DisplayFuel();
-        }
-    }
-
-    //Enlisted from Base Class Person
-    public class Enlisted : Person
-    {
-        public Enlisted() : base()
-        {
-            this.name = "Grunt";
-            this.myVehicle = new Tank();
-            this.myWeapon = new KnifeHands();
-        }
-
-        public override void Travel()
-        {
-            Console.WriteLine($"Enlisted member {this.name} rolled in a tank from A to B, destroying 3 cars in their path.");
-            this.myVehicle.fuel -= this.myVehicle.travelCost;
-            //this.myVehicle.DisplayFuel();
-        }
-    }
 }
