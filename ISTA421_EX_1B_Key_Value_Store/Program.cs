@@ -77,7 +77,7 @@ namespace ISTA421_EX_1B_Key_Value_Store
                 //}
             }
 
-            //Because of the readonly fields in KeyValue class, the only way to set them is upon creation
+            //Because of the readonly fields in KeyValue class, one way to set them is upon creation
             set
             {
                 //Creates new Keyvalue
