@@ -22,7 +22,7 @@ namespace CalebsSportsStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration["Data:CalebsSportsStoreProducts:ConnectionString"]));
+                options.UseSqlServer(Configuration["Data:CalebsSportsStoreProducts:ConnectionString1"]));
 
             services.AddTransient<IProductRepository, EFProductRepository>();
 
@@ -45,6 +45,7 @@ namespace CalebsSportsStore
                 app.UseStatusCodePages();
             }
 
+            //Has to be here in order to use style files or any sound, video , photo pushed to user
             app.UseStaticFiles();
 
             //Allows the session system to automatically associate requests
