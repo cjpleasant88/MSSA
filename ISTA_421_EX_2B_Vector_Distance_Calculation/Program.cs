@@ -40,18 +40,12 @@ namespace ISTA_421_EX_2B_Vector_Distance_Calculation
                         smallest2DDistance = distance;
                         Console.Write($"The closest points are array element {i} -- {Collection2DPoints[point1Index2D].ToString()}, ");
                         Console.Write($"array element {j} -- {Collection2DPoints[point2Index2D].ToString()} ");
-                        Console.WriteLine($"having a distance of {smallest2DDistance}");
+                        Console.WriteLine($"having a distance of {smallest2DDistance} ");
                     }
                 }
             }
 
-            //Reports the final 2 points that have the smallest distance from the 2D array
-            Console.WriteLine("\nThe closest points in the 2D Array are");
-            Console.WriteLine($"array element {point1Index2D} --> {Collection2DPoints[point1Index2D].ToString()} and");
-            Console.WriteLine($"array element {point2Index2D} --> {Collection2DPoints[point2Index2D].ToString()}");
-            Console.WriteLine($"Having a distance of {smallest2DDistance} units.");
-
-            //Breaks up 2D and 3D sections
+            //Break between 2D and 3D sections
             Console.WriteLine();
             Console.WriteLine($"\t********** Finding the closest 3-Dimensional Vectors among {arraySize3D} vectors ***********\n");
 
@@ -84,6 +78,14 @@ namespace ISTA_421_EX_2B_Vector_Distance_Calculation
                     }
                 }
             }
+            Console.WriteLine($"\n\t********** Reporting of the Findings  ***********");
+
+            //Reports the final 2 points that have the smallest distance from the 2D array
+            Console.WriteLine("\nThe closest points in the 2D Array are");
+            Console.WriteLine($"array element {point1Index2D} --> {Collection2DPoints[point1Index2D].ToString()} and");
+            Console.WriteLine($"array element {point2Index2D} --> {Collection2DPoints[point2Index2D].ToString()}");
+            Console.WriteLine($"Having a distance of {smallest2DDistance} units.");
+
             //Reports the final 2 points that have the smallest distance from the 3D array
             Console.WriteLine("\nThe closest points in the 3D Array are");
             Console.WriteLine($"array element {point1Index3D} --> {Collection3DPoints[point1Index3D].ToString()} and");

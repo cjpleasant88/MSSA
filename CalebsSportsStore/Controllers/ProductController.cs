@@ -23,22 +23,22 @@ namespace CalebsSportsStore.Controllers
                     .OrderBy(p => p.ProductID)
                     .Skip((productPage - 1) * PageSize)
                     .Take(PageSize),
-                    PagingInfo = new PagingInfo
-                    {
-                        CurrentPage = productPage,
-                        ItemsPerPage = PageSize,
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = productPage,
+                    ItemsPerPage = PageSize,
 
-                        //This returns the total items in databse no matter what category is selected
-                        //TotalItems = repository.Products.Count()
+                    //This returns the total items in databse no matter what category is selected
+                    //TotalItems = repository.Products.Count()
 
-                        //This determines how many total items are in the selected category
-                        TotalItems = category == null ?
-                            //TotalItems equals this if category == null
-                            repository.Products.Count() :
-                            //TotalItems equals this id category != null
-                            repository.Products.Where(e => e.Category == category).Count()
-                    },
-                    CurrentCategory = category
+                    //This determines how many total items are in the selected category
+                    TotalItems = category == null ?
+                        //TotalItems equals this if category == null
+                        repository.Products.Count() :
+                        //TotalItems equals this id category != null
+                        repository.Products.Where(e => e.Category == category).Count()
+                },
+                CurrentCategory = category
             });
 
         //Ch. 8 Final Code
