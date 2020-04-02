@@ -32,6 +32,7 @@ namespace CalebsSportsStore
 
             //Sets up the In-Memory data store
             services.AddMemoryCache();
+
             //Registers the services used to access session data
             services.AddSession();
         }

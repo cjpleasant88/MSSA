@@ -17,7 +17,7 @@ namespace ISTA_421_EX_2A_Generic_Collections_Project_2
             Generics.ShowSortedList();
             Generics.ShowHashSet();
 
-            Console.WriteLine("*********************** END *****************************");
+            Console.WriteLine("\n*********************** END *****************************");
         }
     }
 }

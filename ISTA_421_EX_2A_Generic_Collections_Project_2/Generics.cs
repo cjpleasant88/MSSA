@@ -97,13 +97,23 @@ namespace ISTA_421_EX_2A_Generic_Collections_Project_2
             {
                 int salary = job.Key;
                 string position = job.Value;
-                Console.WriteLine($"For ${salary}, you can get a {position}");
+                Console.WriteLine($"For ${salary}, you can get a job as a {position}");
             }
         }
         public static void ShowHashSet()
         {
             Console.WriteLine("\n***** Printing from a HASH SET Data Structure: *****");
-
+            HashSet<string> hashSet = new HashSet<string>(new string[] { "Hello", "world", "from" });
+            hashSet.Add("a");
+            HashSet<string> hashSet2 = new HashSet<string>();
+            hashSet2.Add("from");
+            hashSet2.Add("a");
+            hashSet2.Add("Hash Set");
+            hashSet.UnionWith(hashSet2);
+            foreach (string element in hashSet)
+            {
+                Console.WriteLine(element);
+            }
         }
     }
 }
