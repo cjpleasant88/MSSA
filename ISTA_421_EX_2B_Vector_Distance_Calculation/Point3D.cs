@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ISTA_421_EX_2B_Vector_Distance_Calculation
 {
