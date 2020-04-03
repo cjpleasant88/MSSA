@@ -2,23 +2,17 @@
 
 namespace ISTA_421_EX_2B_Vector_Distance_Calculation
 {
-    public class Point3D
+    public struct Point3D
     {
-        public static Random random = new Random();
-        public static int lowPointRange = 0;
-        public static int highPointRange = Program.maxPoint3D;
-
         public int X { get; set; }
-
         public int Y { get; set; }
-
         public int Z { get; set; }
 
-        public Point3D()
+        public Point3D(int x, int y, int z)
         {
-            X = random.Next(lowPointRange, highPointRange + 1);
-            Y = random.Next(lowPointRange, highPointRange + 1);
-            Z = random.Next(lowPointRange, highPointRange + 1);
+            X = x;
+            Y = y;
+            Z = z;
         }
 
         public override string ToString()
@@ -28,9 +22,9 @@ namespace ISTA_421_EX_2B_Vector_Distance_Calculation
 
         public double Distance3DPoints(Point3D point2)
         {
-            int xDistance = this.X - point2.X;
-            int yDistance = this.Y - point2.Y;
-            int zDistance = this.Z - point2.Z;
+            int xDistance = X - point2.X;
+            int yDistance = Y - point2.Y;
+            int zDistance = Z - point2.Z;
             double distance = Math.Sqrt(xDistance * xDistance + yDistance * yDistance + zDistance * zDistance);
             return distance;
         }
