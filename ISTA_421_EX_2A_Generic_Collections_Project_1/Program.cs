@@ -23,6 +23,7 @@ namespace ISTA_421_EX_2A_Generic_Collections_Project_1
     }
     //******** End of Copy From HW Assinment ***********
 
+        //Keyvalue does not use the Object Type anymore
     struct KeyValue<T>
     {
         public readonly string key;
@@ -37,6 +38,7 @@ namespace ISTA_421_EX_2A_Generic_Collections_Project_1
 
     public class MyDictionary
     {
+        //My dictionary uses a keyvalue of type integer
         private KeyValue<int>[] _keyValues = new KeyValue<int>[10];
         private int numKeyValues = 0;
 

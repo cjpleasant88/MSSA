@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_EX_1E_BaseNumberCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_EX_2B_Vector_Distance_Calculation", "ISTA_421_EX_2B_Vector_Distance_Calculation\ISTA_421_EX_2B_Vector_Distance_Calculation.csproj", "{9E8F15EE-6B98-4AAC-92B9-47FAB9173DF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTA_421_EX_2A_Generic_Collections_Project_1", "ISTA_421_EX_2A_Generic_Collections\ISTA_421_EX_2A_Generic_Collections_Project_1.csproj", "{17E1EA74-C132-46A0-B904-88FDC5D7D649}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTA_421_EX_2A_Generic_Collections_Project_1", "ISTA_421_EX_2A_Generic_Collections_Project_1\ISTA_421_EX_2A_Generic_Collections_Project_1.csproj", "{17E1EA74-C132-46A0-B904-88FDC5D7D649}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTA_421_EX_2A_Generic_Collections_Project_2", "ISTA_421_EX_2A_Generic_Collections_Project_2\ISTA_421_EX_2A_Generic_Collections_Project_2.csproj", "{5AFF4ED3-60FD-40CB-9355-8B7EFA71D6FC}"
 EndProject
