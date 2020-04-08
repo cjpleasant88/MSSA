@@ -194,11 +194,13 @@ namespace ISTA_421_EX_3A_Password_Encryption
             Console.WriteLine($"\nCurrent Accounts in System: {numOfAccounts}");
         }
 
-        //Encrypting Method
-        public static string Encrypt(string input)
+        //Encrypting Method -> Not all Hashes are the same length and are Decimal Hashes
+        //This is not used by the Program
+        public static string Encrypt2(string input)
         {
             byte[] inputEncrypted;
             string result = "";
+
             using (MD5 algo = MD5.Create())
             {
                 UnicodeEncoding convert = new UnicodeEncoding();
@@ -210,6 +212,23 @@ namespace ISTA_421_EX_3A_Password_Encryption
                 result += element;
             }
             return result;
+        }
+
+        //This is the Encrypting Method used by the Program
+        // from https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.md5?view=netframework-4.8
+        //Computes a hexadecimal Hash using MD5
+        public static string Encrypt(string input)
+        {
+            StringBuilder sBuilder = new StringBuilder();
+            using (MD5 algo = MD5.Create())
+            {
+                byte[] data = algo.ComputeHash(Encoding.UTF8.GetBytes(input));
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("x2"));
+                }
+            }
+                return sBuilder.ToString();
         }
 
         //Retrieves and validates user input for requested number of integer choices

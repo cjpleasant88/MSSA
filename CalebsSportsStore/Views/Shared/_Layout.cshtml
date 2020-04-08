@@ -7,11 +7,18 @@
           asp-href-include="/lib/bootstrap/dist/**/*.css"
           asp-href-exclude="**/*-reboot*,**/*-grid*"
     />
+    <link rel="stylesheet" asp-href-include="/lib/font-awesome/css/*.css" />
     <title>Caleb's Sports Store</title>
 </head>
 <body>
     <div class="navbar navbar-inverse bg-inverse" role="navigation">
-        <a class="navbar-brand" href="#">CALEB'S SPORTS STORE</a>
+        <!--<div class="row">-->
+            <a class="col navbar-brand" href="#">CALEB'S SPORTS STORE</a>
+
+            <div class="col-4 text-right">
+                @await Component.InvokeAsync("CartSummary") 
+            </div>
+       <!--</div>-->
     </div>
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
