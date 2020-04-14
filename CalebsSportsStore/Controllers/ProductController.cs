@@ -5,6 +5,10 @@ using CalebsSportsStore.Models.ViewModels;
 
 namespace CalebsSportsStore.Controllers
 {
+    //Can apply route attributes to the controllers themselves and remove the "Home" from the action attribute routes below
+    //[Route("Home")]
+    //[Route("[controller]")] <---if you change the controller in the future, you dont need to change this
+    //[Route("[controller]/[action]")]
     public class ProductController : Controller
     {
         private IProductRepository repository;
@@ -15,6 +19,13 @@ namespace CalebsSportsStore.Controllers
             repository = repo;
         }
 
+        //This is how attribute routing works
+        //[Route("~/")] <-- this supercedes the controller route attribute
+        //[Route("[action]")]
+        //[Route("")]
+        //[Route("Home")]
+        //[Route("Home/Index")]
+        //[Route("Home/Index/{id?}")]
         public ViewResult List(string category, int productPage = 1)
             => View(new ProductsListViewModel
             {

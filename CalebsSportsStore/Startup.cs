@@ -82,6 +82,10 @@ namespace CalebsSportsStore
                 defaults: new { controller = "Product", action = "List", productPage = 1 }
                 );
 
+                //Normal Default Route
+                //routes.MapRoute(name: "default", template: "{controller=home}/{action=Index}/{id?}");
+                //routes.MapRoute("default", "{controller=home}/{action=Index}/{id?}");
+
                 routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
 
                 //Final from FROM CH. 8

@@ -68,9 +68,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTA_421_EX_3A_Password_Encryption", "ISTA_421_EX_3A_Password_Encryption\ISTA_421_EX_3A_Password_Encryption.csproj", "{E98730B1-6EFB-4A15-B352-D47D694CEA9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_EX_3A_Password_Encryption", "ISTA_421_EX_3A_Password_Encryption\ISTA_421_EX_3A_Password_Encryption.csproj", "{E98730B1-6EFB-4A15-B352-D47D694CEA9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTA_421_EX_3B_Math_Games", "ISTA_421_EX_3B_Math_Games\ISTA_421_EX_3B_Math_Games.csproj", "{A48A4E0D-DDD9-4481-80BD-89040DE61B56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_EX_3B_Math_Games", "ISTA_421_EX_3B_Math_Games\ISTA_421_EX_3B_Math_Games.csproj", "{A48A4E0D-DDD9-4481-80BD-89040DE61B56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTA_421_EX_4A_Encrypting_Decrypting_Messages", "ISTA_421_EX_4A_Encrypting_Decrypting_Messages\ISTA_421_EX_4A_Encrypting_Decrypting_Messages.csproj", "{61470356-6CEE-4B66-AD68-D9CB9AFD7206}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -208,6 +210,10 @@ Global
 		{A48A4E0D-DDD9-4481-80BD-89040DE61B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A48A4E0D-DDD9-4481-80BD-89040DE61B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A48A4E0D-DDD9-4481-80BD-89040DE61B56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61470356-6CEE-4B66-AD68-D9CB9AFD7206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61470356-6CEE-4B66-AD68-D9CB9AFD7206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61470356-6CEE-4B66-AD68-D9CB9AFD7206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61470356-6CEE-4B66-AD68-D9CB9AFD7206}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

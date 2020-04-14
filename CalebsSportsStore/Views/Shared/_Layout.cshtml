@@ -3,10 +3,25 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet"
-          asp-href-include="/lib/bootstrap/dist/**/*.css"
-          asp-href-exclude="**/*-reboot*,**/*-grid*"
-    />
+    <!--If development environment, gets bootstrap locally-->
+    <environment include="Development">
+        <link rel="stylesheet"
+              asp-href-include="/lib/bootstrap/dist/**/*.css"
+              asp-href-exclude="**/*-reboot*,**/*-grid*" />
+    </environment>
+    <!--Below uses cdn to get bootstrap for performance in not a development environment, if unable to, file is corupt, falls back to local bootstrap-->
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous"
+              asp-fallback-href-include="/lib/bootstrap/dist/**/*.css"
+              asp-fallback-href-exclude="**/*-reboot*,**/*-grid*"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true">
+    </environment>
+
     <link rel="stylesheet" asp-href-include="/lib/font-awesome/css/*.css" />
     <title>Caleb's Sports Store</title>
 </head>
