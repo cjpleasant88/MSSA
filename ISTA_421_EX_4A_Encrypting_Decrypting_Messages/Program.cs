@@ -221,7 +221,6 @@ namespace ISTA_421_EX_4A_Encrypting_Decrypting_Messages
                 else
                 {
                     character = text[i] + GetPosition(result[i - keyLength]) * -1;
-
                 }
                 GetInRange(ref character);
                 result += (char)character;

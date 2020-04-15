@@ -11,5 +11,23 @@
       "library": "font-awesome@5.13.0",
       "destination": "wwwroot/lib/font-awesome/"
     }
-  ]
+  ,
+{
+  "provider": "cdnjs",
+  "library": "jquery@3.5.0",
+  "destination": "wwwroot/lib/jquery/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "jQuery-Validation-Engine@2.6.4",
+  "destination": "wwwroot/lib/jQuery-Validation-Engine/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "jquery-validation-unobtrusive@3.2.11",
+  "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+}
+]
 }

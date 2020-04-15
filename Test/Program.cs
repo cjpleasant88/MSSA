@@ -2,38 +2,12 @@
 
 namespace Test
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-
-	class DisposableWrapper : IDisposable
+	class Program
 	{
-		private bool disposed = false;
-		public DisposableWrapper(IDisposable param)
+		static void Main()
 		{
-			IDisposable data = param;
-		}
-
-		~DisposableWrapper()
-		{
-			this.Dispose();
-		}
-
-		public void Dispose()
-		{
-			lock (this)
-			{
-				if (!this.disposed)
-				{
-					Console.WriteLine("This item is being disposed");
-				}
-				this.disposed = true;
-				GC.SuppressFinalize(this);
-			}
+			Console.WriteLine("Hello World!");
 		}
 	}
+
 }

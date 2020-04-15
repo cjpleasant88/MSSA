@@ -11,6 +11,7 @@ namespace CalebsSportsStore.Models
         {
             ApplicationDbContext context = app.ApplicationServices
             .GetRequiredService<ApplicationDbContext>();
+
             context.Database.Migrate();
 
             if (!context.Products.Any())
