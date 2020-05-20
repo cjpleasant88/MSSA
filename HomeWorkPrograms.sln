@@ -70,6 +70,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_EX_3B_Math_Games",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_EX_4A_Encrypting_Decrypting_Messages", "ISTA_421_EX_4A_Encrypting_Decrypting_Messages\ISTA_421_EX_4A_Encrypting_Decrypting_Messages.csproj", "{61470356-6CEE-4B66-AD68-D9CB9AFD7206}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_EX_5A_Password_Cracker", "ISTA_421_EX_5A_Password_Cracker\ISTA_421_EX_5A_Password_Cracker.csproj", "{01713A65-921E-47CD-8300-3B41FE2F4D11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_EX_7A_CSV_Parsing", "ISTA_421_EX_7A_CSV_Parsing\ISTA_421_EX_7A_CSV_Parsing.csproj", "{9172398B-E687-4471-9616-9F20B4C3C405}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ISTA_421_Lab_8A_C-Sharp_22", "ISTA_421_Lab_8A_C-Sharp_22\ISTA_421_Lab_8A_C-Sharp_22.csproj", "{4B4BA9A8-6BB4-440C-B5EC-17A6DBDFB03E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISTA_421_HW_9C_CH-21_Review_LINQ", "ISTA_421_HW_9C_CH-21_Review_LINQ\ISTA_421_HW_9C_CH-21_Review_LINQ.csproj", "{375CCD77-1CC0-484D-8A0E-5280F1778044}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -202,6 +210,22 @@ Global
 		{61470356-6CEE-4B66-AD68-D9CB9AFD7206}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61470356-6CEE-4B66-AD68-D9CB9AFD7206}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61470356-6CEE-4B66-AD68-D9CB9AFD7206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01713A65-921E-47CD-8300-3B41FE2F4D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01713A65-921E-47CD-8300-3B41FE2F4D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01713A65-921E-47CD-8300-3B41FE2F4D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01713A65-921E-47CD-8300-3B41FE2F4D11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9172398B-E687-4471-9616-9F20B4C3C405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9172398B-E687-4471-9616-9F20B4C3C405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9172398B-E687-4471-9616-9F20B4C3C405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9172398B-E687-4471-9616-9F20B4C3C405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B4BA9A8-6BB4-440C-B5EC-17A6DBDFB03E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B4BA9A8-6BB4-440C-B5EC-17A6DBDFB03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B4BA9A8-6BB4-440C-B5EC-17A6DBDFB03E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B4BA9A8-6BB4-440C-B5EC-17A6DBDFB03E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{375CCD77-1CC0-484D-8A0E-5280F1778044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{375CCD77-1CC0-484D-8A0E-5280F1778044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{375CCD77-1CC0-484D-8A0E-5280F1778044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{375CCD77-1CC0-484D-8A0E-5280F1778044}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

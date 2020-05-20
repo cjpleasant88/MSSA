@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CalebsSportsStore.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CalebsSportsStore.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductRepository repository;
@@ -45,6 +47,13 @@ namespace CalebsSportsStore.Controllers
                 TempData["message"] = $"{deletedProduct.Name} was deleted";
             }
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult SeedDatabase()
+        {
+            SeedData.EnsurePopulated(HttpContext.RequestServices);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

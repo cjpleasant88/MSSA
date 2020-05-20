@@ -2,17 +2,22 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace CalebsSportsStore.Models
 {
     public static class SeedData
     {
-        public static void EnsurePopulated(IApplicationBuilder app)
-        {
-            ApplicationDbContext context = app.ApplicationServices
-            .GetRequiredService<ApplicationDbContext>();
+        //public static void EnsurePopulated(IApplicationBuilder app)
+        //{
+        //    ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
 
-            context.Database.Migrate();
+        //    context.Database.Migrate();
+
+        public static void EnsurePopulated(IServiceProvider services)
+        {
+            ApplicationDbContext context = services.GetRequiredService<ApplicationDbContext>();
+        //
 
             if (!context.Products.Any())
             {

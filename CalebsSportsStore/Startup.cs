@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using CalebsSportsStore.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace CalebsSportsStore
 {
@@ -22,7 +23,17 @@ namespace CalebsSportsStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration["Data:CalebsSportsStoreProducts:ConnectionString1"]));
+                options.UseSqlServer(Configuration["Data:CalebsSportsStoreProducts:ConnectionString"]));   //, options => options.EnableRetryOnFailure())) ;
+
+
+            //This connects the Identity database to the application
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseSqlServer(Configuration["Data:CalebsSportsStoreIdentity:ConnectionString"]));
+
+            //This adds the ability to use built in classes to represent users and roles
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IProductRepository, EFProductRepository>();
 
@@ -49,6 +60,10 @@ namespace CalebsSportsStore
                 app.UseDeveloperExceptionPage();
                 app.UseStatusCodePages();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
 
             //Has to be here in order to use style files or any sound, video , photo pushed to user
             app.UseStaticFiles();
@@ -56,6 +71,9 @@ namespace CalebsSportsStore
             //Allows the session system to automatically associate requests
             //with sessions when they arrive from the client
             app.UseSession();
+
+            //Used to intercept requests and implement a security Poilcy
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
@@ -98,7 +116,10 @@ namespace CalebsSportsStore
                 //    name: "default",
                 //    template: "{controller=Product}/{action=List}/{id?}");
             });
-            SeedData.EnsurePopulated(app);
+
+            //PG. 339 instructs to comment these seeding lines out
+            //SeedData.EnsurePopulated(app);
+            //IdentiitySeedData.EnsurePopulated(app);
 
             //app.UseRouting();
             //app.UseEndpoints(endpoints =>

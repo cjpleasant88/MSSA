@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ISTA_421_EX_2A_Generic_Collections_Project_1
 {
@@ -20,10 +22,11 @@ namespace ISTA_421_EX_2A_Generic_Collections_Project_1
             d["Dogs"] = 17;
             Console.WriteLine($"{(int)d["Cats"]}, {(int)d["Dogs"]}");
         }
+
     }
     //******** End of Copy From HW Assinment ***********
 
-        //Keyvalue does not use the Object Type anymore
+    //Keyvalue does not use the Object Type anymore
     struct KeyValue<T>
     {
         public readonly string key;
